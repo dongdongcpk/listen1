@@ -8,12 +8,14 @@ from handlers.playlist import AddMyPlaylistHandler, ClonePlaylistHandler, \
     ShowMyPlaylistHandler, ShowPlaylistHandler
 from handlers.search import SearchHandler
 from handlers.trackfile import TrackFileHandler
+from handlers.searchhybrid import SearchHybridHandler
 
 
 url_patterns = [
     (r"/", HomeHandler),
 
     (r"/search", SearchHandler),
+    (r"/search_hybrid", SearchHybridHandler),
 
     # player handlers
     (r"/playlist", PlaylistHandler),

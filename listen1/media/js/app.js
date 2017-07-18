@@ -472,6 +472,15 @@
         });
       };
 
+      $scope.change2hybrid = function(newTab){
+        $scope.tab = newTab;
+        $scope.result = [];
+        $http.get('/search_hybrid?source='+ $scope.tab + '&keywords=' + $scope.keywords).success(function(data) {
+            // update the textarea
+            $scope.result = data.result; 
+        });
+      };
+
       $scope.isActiveTab = function(tab){
         return $scope.tab === tab;
       };
@@ -485,10 +494,17 @@
         // go ahead and retrieve the data
         if (tmpStr === $scope.keywords)
         {
-          $http.get('/search?source='+ $scope.tab + '&keywords=' + $scope.keywords).success(function(data) {
-            // update the textarea
-            $scope.result = data.result; 
-          });
+          if ($scope.tab === 4) {
+            $http.get('/search_hybrid?source='+ $scope.tab + '&keywords=' + $scope.keywords).success(function(data) {
+                // update the textarea
+                $scope.result = data.result; 
+            });
+          } else {
+            $http.get('/search?source='+ $scope.tab + '&keywords=' + $scope.keywords).success(function(data) {
+              // update the textarea
+              $scope.result = data.result; 
+            });
+          }
         }
       });
   }]);

@@ -2,3 +2,5 @@ env/
 *.pyc
 listen1/media/music/
 listen1/media/user/
+.DS_Store
+.vscode
